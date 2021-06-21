@@ -151,7 +151,7 @@ session_start();
 
                 <img src="https://img.collegepravesh.com/2017/02/BMSCE-Logo.png" class="rounded float-left" alt="BMSCE-Logo" width="150" height="150">
 
-                <h2 class="display-1 text-md-center pt-3 " style="font-weight:500;">  Portal</h2>
+                <h2 class="display-1 text-md-center pt-3 " style="font-weight:500;">BMSCE Exam Portal</h2>
 
 
 
