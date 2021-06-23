@@ -1,4 +1,8 @@
 <?php
+session_start();
+if(!isset($_SESSION["usn"])){
+  header("Location:../home.php");
+}
 $conn = new mysqli('localhost', 'root', '', 'project_work');
 // Check connection
 if ($conn->connect_error) {
@@ -8,6 +12,7 @@ if ($conn->connect_error) {
   $sql = "SELECT date,id, announcement,file_name,pdf_doc from annoncements;";
 
   $result = $conn->query($sql);
+
 }
 ?>
 <!DOCTYPE html>
@@ -125,40 +130,44 @@ if ($conn->connect_error) {
                 <img class="card-img-top mx-auto d-block" src="https://cdn1.vectorstock.com/i/thumb-large/22/05/male-profile-picture-vector-1862205.jpg" alt="Card image" style="width:156px;">
 
                 <table class="table table-borderless font-weight-bold  ">
+                <tody>
+                <?php
 
-                  <tbody>
-                    <tr>
-                      <td>Name : </td>
-                      <td>STUDENT</td>
-                    </tr>
+                      $conn = new mysqli('localhost', 'root', '', 'project_work');
 
-                    <tr>
-                      <td>USN : </td>
-                      <td>1BM19CS123</td>
-                    </tr>
+                       if ($conn->connect_error) {
+                          die("Connection failed: " . $conn->connect_error);
+                       }
+                           
+                     $usn=  $_SESSION["usn"];
+
+                         $sql= " SELECT  Name, USN, Semester, Email_ID, date_format(DOB, '%m/%d/%Y')as DOB from registered_students where USN = '$usn' ";
+                       $result = $conn-> query($sql);
+
+                     
+                         while ($row = $result-> fetch_assoc()){
+                          
+                           echo "<tr><td>Name :</td><td>".$row["Name"]."</td></tr>";
+                           echo "<tr><td>USN :</td><td>".$row["USN"]."</td></tr>";
+                           echo "<tr><td>semester :</td><td>".$row["Semester"]."</td></tr>";
+                           echo "<tr><td>Email-ID :</td><td>".$row["Email_ID"]."</td></tr>";
+                           echo "<tr><td>DOB :</td><td>".$row["DOB"]."</td></tr>";
+                             
+                         }
+                         
+                       
+                      
+                       $conn-> close();
+                      
+                       ?>
+                    </tbody>
+                      </table>
+
+                  
 
 
-                    <tr>
-                      <td>Semester : </td>
-                      <td>5</td>
-                    </tr>
-
-                    <tr>
-                      <td>Email-Id : </td>
-                      <td>student.cs18@bmsce.ac.in</td>
-                    </tr>
-
-
-
-                    <tr>
-                      <td>DOB : </td>
-                      <td>29/02/2000</td>
-                    </tr>
-
-
-                  </tbody>
-                </table>
-
+                  
+                
                 <div class=" p-1 login">
                   <button type="button" class="btn btn-block " href="#changepassword" data-toggle="modal" style="background-color: #0e918c;border-radius: 30px;color:white;">Change Password</button>
                   <a href="#" style=" text-decoration:none;">
