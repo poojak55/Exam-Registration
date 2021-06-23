@@ -1,6 +1,83 @@
 <?php
 session_start();
+$usnErr;
+$std_passErr;
+$std_pass;
 
+
+if (isset($_POST["student"])) {
+    $_SESSION["usn"] = $_POST["usn"];
+    $usn = test_input($_POST["usn"]);
+
+    $_SESSION["usn"] = $_POST["usn"];
+    $_SESSION["password"] = $_POST["std_pass"];
+    $usnErr;
+    $std_passErr;
+    $std_pass;
+    $usn = test_input($_POST["usn"]);
+    if (empty($_POST["usn"])) {
+        $usnErr = "USN is required";
+    } else {
+
+
+        $sub1 = $usn . substr(1, 3);
+        $sub2 = $usn . substr(5, 7);
+        if ($sub1 != "BM" && $sub2 != "CS" && $usn !== "" && strlen($usn) != 10) {
+            $usnErr = "USN is  in invalid format";
+        }
+    }
+    if (empty($_POST["std_pass"])) {
+        $std_passErr = "Password is required";
+    }
+
+
+
+    if (!isset($usnErr)) {
+        include("Student/stulogin_Validate.php");
+    }
+}
+if (isset($_POST["admin"])) {
+    $_SESSION["adm_id"] = $_POST['ID'];
+
+    $IDErr;
+    $adm_passErr;
+    $adm_pass;
+    $ID = test_input($_POST["ID"]);
+
+
+
+
+
+
+
+    if (empty($_POST["ID"])) {
+        $IDErr = "ID is required";
+    } else {
+
+
+
+        if (strlen($ID) <= 4) {
+            $IDErr = "ID is  in invalid format";
+        }
+    }
+    if (empty($_POST["adm_pass"])) {
+        $adm_passErr = "Password is required";
+    }
+
+
+
+
+    if (!isset($IDErr)) {
+        include("Admin/admlogin_validate.php");
+    }
+}
+function test_input($data)
+{
+    $data = trim($data);
+    $data = stripslashes($data);
+    $data = htmlspecialchars($data);
+    return $data;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -77,11 +154,11 @@ session_start();
         .login-form-2 .btnSubmit {
             font-weight: 600;
             color: white;
-            background: linear-gradient(0deg, rgba(226,16,16,1) 3%, rgba(162,10,10,1) 78%);
+            background: linear-gradient(0deg, rgba(226, 16, 16, 1) 3%, rgba(162, 10, 10, 1) 78%);
         }
 
         .login-form-2 .ForgetPwd {
-            color:#a20a0a;
+            color: #a20a0a;
             font-weight: 600;
             text-decoration: none;
         }
@@ -166,13 +243,13 @@ session_start();
         <div class="row">
             <div class="col-md-6  login-form-1">
                 <h3>Student Login</h3>
-                <form method="POST" action="Student/stulogin_Validate.php">
+                <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                     <div class="form-group ">
 
                         <?php if (isset($usnErr)) { ?>
                             <span class="text-danger">*<?php echo $usnErr; ?></span>
                         <?php } ?>
-                        <input type="text" class="form-control mb-4" placeholder="USN" name="usn" value="<?php echo isset($_POST["usn"]) ? $_POST["usn"] : ''; ?>" />
+                        <input type="text" class="form-control mb-4" id="student" placeholder="USN" name="usn" value="<?php echo isset($_POST["usn"]) ? $_POST["usn"] : ''; ?>" />
 
                     </div>
                     <div class="form-group">
@@ -183,7 +260,7 @@ session_start();
                         <input type="password" class="form-control mb-4" placeholder=" Password " value="<?php echo isset($_POST["std_pass"]) ? $_POST["std_pass"] : ''; ?>" name="std_pass" />
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btnSubmit" value="Log in" />
+                        <input type="submit" class="btnSubmit" name="student" value="Log in" />
                     </div>
                     <div class="form-group">
                         <a href="#" class="ForgetPwd">Forgot Password?</a>
@@ -193,7 +270,7 @@ session_start();
             </div>
             <div class="col-md-6 login-form-2">
                 <h3>Admin Login</h3>
-                <form method="POST" action="Admin/admlogin_validate.php">
+                <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                     <div class="form-group">
                         <?php if (isset($IDErr)) { ?>
                             <span class="text-danger">*<?php echo $IDErr; ?></span>
@@ -207,7 +284,7 @@ session_start();
                         <input type="password" class="form-control mb-4" placeholder=" Password " name="adm_pass" value="<?php echo isset($_POST["adm_pass"]) ? $_POST["adm_pass"] : ''; ?>" />
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="btnSubmit" value="Log in" />
+                        <input type="submit" class="btnSubmit" name="admin" value="Log in" />
                     </div>
                     <div class="form-group">
 
