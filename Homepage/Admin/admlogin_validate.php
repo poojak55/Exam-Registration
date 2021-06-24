@@ -35,7 +35,7 @@ if ($conn->connect_error) {
             $pass = $_POST["adm_pass"];
             if ($pass == $Password) {
 
-                header("Location:Admin/admin_home.php");
+                header("Location:admin_home.php");
                 $sql->close();
                 $sql2->close();
                 $conn->close();
