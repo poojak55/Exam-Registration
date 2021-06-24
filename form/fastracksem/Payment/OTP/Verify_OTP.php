@@ -3,7 +3,7 @@ session_start();
 if (isset($_POST['verify'])) {
     $verified = $_POST['otp'];
     if ($verified == $_SESSION['otp']) {
-        $conn = new mysqli('localhost', 'root', '', 'otp');
+        $conn = new mysqli('localhost', 'root', '', 'project_work');
         // Check connection
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);

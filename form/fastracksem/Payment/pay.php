@@ -1,16 +1,17 @@
 <?php
 session_start();
+$usn = $_SESSION["usn"];
+$email = $_SESSION["email"];
 $otp = rand(1000, 9999);
 $_SESSION['otp'] = $otp;
 if (isset($_POST['pay'])) {
-    $conn = new mysqli('localhost', 'root', '', 'otp');
+    $conn = new mysqli('localhost', 'root', '', 'project_work');
     // Check connection
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     } else {
 
-        $usn = $_SESSION["usn"];
-        $email = $_SESSION["email"];
+
 
         $stmt = $conn->prepare('INSERT INTO `otp_gen` (`USN`, `email`, `otp`) VALUES (?,?,?)');
 

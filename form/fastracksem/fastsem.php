@@ -321,31 +321,6 @@
         <form id="registration" method="POST" action="fast_Validate.php">
             <div class="row mx-3">
                 <div class="col">
-                    <label for="Name">Name:</label>
-                    <?php if (isset($nameErr)) { ?>
-                        <span class="text-danger">*<?php echo $nameErr; ?></span>
-                    <?php } ?>
-                    <input type="text" class="form-control" id="name" name="name" value="<?php echo isset($_POST["name"]) ? $_POST["name"] : ''; ?>">
-
-
-
-                    <label for="USN">USN:</label>
-                    <?php if (isset($usnErr)) { ?>
-                        <span class="text-danger">*<?php echo $usnErr; ?></span>
-                    <?php } ?>
-                    <input type="text" class="form-control" id="usn" name="usn" value="<?php echo isset($_POST["usn"]) ? $_POST["usn"] : ''; ?>">
-
-                    <label for="email">Email-Id:</label>
-                    <?php if (isset($emailErr)) { ?>
-                        <span class="text-danger">*<?php echo $emailErr; ?></span>
-                    <?php } ?>
-                    <input type="text" class="form-control" id="email" name="email" value="<?php echo isset($_POST["email"]) ? $_POST["email"] : ''; ?>">
-
-                    <label for="birthday">DOB:</label>
-                    <?php if (isset($dobErr)) { ?>
-                        <span class="text-danger">*<?php echo $dobErr; ?></span>
-                    <?php } ?>
-                    <input type="date" class="form-control" id="birthday" name="dob" value="<?php echo isset($_POST["dob"]) ? $_POST["dob"] : ''; ?>">
 
 
 
@@ -353,7 +328,7 @@
 
 
 
-                    <label for="sel1">Semester:</label>
+                    <label for="sel1"> Select your Semester:</label>
                     <?php if (isset($radioErr)) { ?>
                         <span class="text-danger">*<?php echo $radioErr; ?></span>
                     <?php } ?>
@@ -417,13 +392,6 @@
 
 
 
-                    <label for="sec">Section:</label>
-                    <?php if (isset($secErr)) { ?>
-                        <span class="text-danger">*<?php echo $secErr; ?></span>
-                    <?php } ?>
-
-                    <input type="text" class="form-control" id="sec" name="section" value="<?php echo isset($_POST["section"]) ? $_POST["section"] : ''; ?>">
-
 
                     <label for="cred">Total Credits:</label>
                     <?php if (isset($credErr)) { ?>
@@ -445,7 +413,10 @@
 
 
 
-                    <button type="submit" class=" btn  btn-block  shadow-sm mx-auto" id="submitsem"> SUBMIT </button>
+
+                </div>
+            </div>
+            <button type="submit" class=" btn  btn-block  shadow-sm mx-auto" id="submitsem"> SUBMIT </button>
         </form>
 
     </div>

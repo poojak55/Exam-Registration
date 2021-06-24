@@ -16,7 +16,10 @@ if ($conn->connect_error) {
     $result = $conn->query("SELECT * FROM `registered_students` WHERE USN='$usn'");
 
 
-
+    while ($row1 = $result->fetch_assoc()) {
+        $_SESSION["sem"] = $row1['Semester'];
+        $_SESSION["email"] = $row1['Email_ID'];
+    }
 
 
 

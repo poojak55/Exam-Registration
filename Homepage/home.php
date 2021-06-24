@@ -6,7 +6,7 @@ $std_pass;
 
 
 if (isset($_POST["student"])) {
-    $_SESSION["usn"] = $_POST["usn"];
+
     $usn = test_input($_POST["usn"]);
 
     $_SESSION["usn"] = $_POST["usn"];

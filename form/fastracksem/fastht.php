@@ -7,7 +7,7 @@ $username = "root";
 $password = "";
 $dbname = "project_work";
 $usn = $_SESSION["usn"];
-$sem = $_SESSION["radio"];
+$sem = $_SESSION["sem"];
 
 
 // Create connection
@@ -19,22 +19,22 @@ if ($conn->connect_error) {
 
 
   if ($sem == 3) {
-    $sql = "SELECT s.Date,s.Name,s.Code from fast_ticket f INNER JOIN third_sem_sub s on f.Subjects=s.Name where f.USN='$usn'";
+    $sql = "SELECT s.Date,s.Name,s.Code from fastsem_registered f INNER JOIN third_sem_sub s on f.selected_subjects=s.Name where f.USN='$usn'";
   }
   if ($sem == 4) {
-    $sql = "SELECT s.Date,s.Name,s.Code from fast_ticket f INNER JOIN fourth_sem_sub s on f.Subjects=s.Name where f.USN='$usn'";
+    $sql = "SELECT s.Date,s.Name,s.Code from fastsem_registered f INNER JOIN fourth_sem_sub s on f.selected_subjects=s.Name where f.USN='$usn'";
   }
   if ($sem == 5) {
-    $sql = "SELECT s.Date,s.Name,s.Code from fast_ticket f INNER JOIN fifth_sem_sub s on f.Subjects=s.Name where f.USN='$usn'";
+    $sql = "SELECT s.Date,s.Name,s.Code from fastsem_registered f INNER JOIN fifth_sem_sub s on f.selected_subjectss=s.Name where f.USN='$usn'";
   }
   if ($sem == 6) {
-    $sql = "SELECT s.Date,s.Name,s.Code from fast_ticket f INNER JOIN sixth_sem_sub s on f.Subjects=s.Name where f.USN='$usn'";
+    $sql = "SELECT s.Date,s.Name,s.Code from fastsem_registered f INNER JOIN sixth_sem_sub s on f.selected_subjects=s.Name where f.USN='$usn'";
   }
   if ($sem == 7) {
-    $sql = "SELECT s.Date,s.Name,s.Code from fast_ticket f INNER JOIN sevnth_sem_sub s on f.Subjects=s.Name where f.USN='$usn'";
+    $sql = "SELECT s.Date,s.Name,s.Code from fastsem_registered f INNER JOIN sevnth_sem_sub s on f.selected_subjects=s.Name where f.USN='$usn'";
   }
   if ($sem == 8) {
-    $sql = "SELECT s.Date,s.Name,s.Code from fast_ticket f INNER JOIN eighth_sem_sub s on f.Subjects=s.Name where f.USN='$usn'";
+    $sql = "SELECT s.Date,s.Name,s.Code from fastsem_registered f INNER JOIN eighth_sem_sub s on f.selected_subjects=s.Name where f.USN='$usn'";
   }
   $result = $conn->query($sql);
 }
@@ -70,16 +70,17 @@ if ($conn->connect_error) {
   td {
 
     text-align: center;
-    border:2px solid black;
+    border: 2px solid black;
     border-collapse: collapse;
   }
+
   th {
-  font-size:20px;
-  background-color: white;
-  color: black;
-}
+    font-size: 20px;
+    background-color: white;
+    color: black;
 
 
+  }
 
   .demo-wrap {
     overflow: hidden;
@@ -120,18 +121,18 @@ if ($conn->connect_error) {
 
   <div class='tab '>
 
-    
+
     <div>
       <table class="table">
-        
-          <tr>
-            <th scope="col">DATE</th>
-            <th scope="col">SUBJECT</th>
-            <th scope="col">SUBJECT CODE</th>
-            <th scope="col">INVIGILATOR SIGN</th>
 
-          </tr>
-        
+        <tr>
+          <th scope="col">DATE</th>
+          <th scope="col">SUBJECT</th>
+          <th scope="col">SUBJECT CODE</th>
+          <th scope="col">INVIGILATOR SIGN</th>
+
+        </tr>
+
         <tbody>
           <?php
           while ($row = $result->fetch_assoc()) {

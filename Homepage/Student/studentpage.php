@@ -118,8 +118,11 @@ if (!isset($_SESSION["usn"])) {
           <div class="tab-pane container  active" id="home">
             <p class="mt-5" style="font-size: 30px;font-weight:600;text-align:center;">Select the Exam to Register:</p>
             <div style="  top:50%;">
-              <button type="button" class="btn m-3 btn-block mx-auto d-block  sembtn " style="border-radius: 10px;" data-target="#semester" onclick="window.location.href='../../../Project/form/sem/sem.php';">Semester exam</button>
-              <button type="button" class="btn m-3 btn-block mx-auto d-block  fastbtn " style="border-radius: 10px;" data-target="#fasttrack" onclick="window.location.href='../../../Project/form/fastracksem/fastsem.php';">Fast-Track Semester exam</button>
+              <form method="POST" action='../../form/sem/sem_Validate.php'>
+
+                <button type="submit" class="btn m-3 btn-block mx-auto d-block  sembtn " style="border-radius: 10px;" data-target="#semester">Semester exam</button>
+              </form>
+              <button type="button" class="btn m-3 btn-block mx-auto d-block  fastbtn " style="border-radius: 10px;" data-target="#fasttrack" onclick="window.location.href='../../form/fastracksem/fastsem.php';">Fast-Track Semester exam</button>
             </div>
           </div>
 
@@ -129,6 +132,7 @@ if (!isset($_SESSION["usn"])) {
             <div class="card mx-auto d-block mt-3" style="width:400px">
 
               <div class="card-body  ">
+
                 <img class="card-img-top mx-auto d-block" src="https://cdn1.vectorstock.com/i/thumb-large/22/05/male-profile-picture-vector-1862205.jpg" alt="Card image" style="width:156px;">
 
                 <table class="table table-borderless font-weight-bold  ">
