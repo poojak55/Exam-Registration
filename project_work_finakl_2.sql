@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2021 at 09:56 AM
+-- Generation Time: Jun 24, 2021 at 02:31 PM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -108,6 +108,23 @@ CREATE TABLE `fastsem_registered` (
   `selected_subjects` varchar(60) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Dumping data for table `fastsem_registered`
+--
+
+INSERT INTO `fastsem_registered` (`USN`, `selected_subjects`) VALUES
+('1BM19CS113', 'linear algebra'),
+('1BM18CS125', 'Machine Learning'),
+('1BM18CS125', 'Cryptography and Network Security'),
+('1BM18CS125', 'Natural Language Processing'),
+('1BM18CS125', 'Robot Process Automation Design and Development'),
+('1BM17CS122', ' Cloud Computing'),
+('1BM19CS167', 'Microprocessors and Microcontrollers'),
+('1BM19CS167', 'Computer Organization and Architecture'),
+('1BM19CS111', 'Theoretical Foundations of Computations'),
+('1BM19CS111', 'Database Management Systems'),
+('1BM19CS111', 'Constitution of India');
+
 -- --------------------------------------------------------
 
 --
@@ -159,7 +176,8 @@ INSERT INTO `fourth_sem_sub` (`Date`, `Name`, `Code`) VALUES
 ('2021-06-10', 'Database Management Systems', '19CS4PCDBM'),
 ('2021-06-12', 'Analysis and Design of Algorithms', '19CS4PCADA'),
 ('2021-06-14', 'Operating Systems', '19CS4PCOPS'),
-('2021-06-16', 'Constitution of India, Professional Ethics and Hum', '19IC3HSCPH/ 19IC4HSCPH');
+('2021-06-12', 'Constituition of India', '19IC3HSCPH/19IC4HSCPH'),
+('2021-06-12', 'Constitution of India', '19IC3HSCPH/19IC4HSCPH');
 
 -- --------------------------------------------------------
 
@@ -180,7 +198,33 @@ INSERT INTO `login_details` (`USN`, `Password`) VALUES
 ('1BM19CS113', 'aarya'),
 ('1BM19CS113', 'aarya'),
 ('1BM19CS113', 'aarya'),
-('1BM19CS113', 'aarya');
+('1BM19CS113', 'aarya'),
+('1BM18CS125', 'puneeth'),
+('1BM19CS111', 'pooja'),
+('1BM17CS122', 'prema'),
+('1BM19CS167', 'surya');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `otp_gen`
+--
+
+CREATE TABLE `otp_gen` (
+  `USN` varchar(11) NOT NULL,
+  `email` varchar(30) NOT NULL,
+  `otp` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `otp_gen`
+--
+
+INSERT INTO `otp_gen` (`USN`, `email`, `otp`) VALUES
+('1BM19CS160', 'prajithaarya.cs19@bmsce.ac.in', 6074),
+('1BM19CS167', 'surya.cs19@bmsce.ac.in', 6826),
+('1BM19CS198', 'prajithaarya.cs19@bmsce.ac.in', 3593),
+('1BM19CS560', 'prajithaarya.cs19@bmsce.ac.in', 5360);
 
 -- --------------------------------------------------------
 
@@ -204,9 +248,12 @@ CREATE TABLE `registered_students` (
 
 INSERT INTO `registered_students` (`USN`, `Name`, `Semester`, `Section`, `DOB`, `Email_ID`, `Profile_pic`) VALUES
 ('1BM17CS122', 'Prema', 8, 'C', '2021-06-09', 'premas.cs17@bmsce.ac.in', 'pic'),
+('1BM17CS199', 'anushka', 7, 'B', '1999-08-12', 'anushka.cs19@bmsce.ac.in', 'Profile.png'),
+('1BM18CS113', 'karthi', 5, 'A', '2000-11-17', 'karthi.cs19@bmsce.ac.in', 'Profile.png'),
 ('1BM18CS125', 'Puneeth', 6, 'B', '2021-06-14', 'puneethk.cs18@bmsce.ac.in', 'pic.png'),
 ('1BM19CS111', 'Pooja', 4, 'A', '2021-06-23', 'poojak.cs19@bmsce.ac.in', 'Profile.png'),
-('1BM19CS113', 'Prajith Aarya', 4, 'C', '2001-07-09', 'prajithaarya.cs19@bmsce.ac.in', 'Profile.png');
+('1BM19CS113', 'Prajith Aarya', 4, 'C', '2001-07-09', 'prajithaarya.cs19@bmsce.ac.in', 'Profile.png'),
+('1BM19CS167', 'surya', 3, 'C', '2001-06-05', 'surya.cs19@bmsce.ac.in', 'Profile.png');
 
 -- --------------------------------------------------------
 
@@ -217,6 +264,16 @@ INSERT INTO `registered_students` (`USN`, `Name`, `Semester`, `Section`, `DOB`, 
 CREATE TABLE `sem_registered` (
   `USN` char(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `sem_registered`
+--
+
+INSERT INTO `sem_registered` (`USN`) VALUES
+('1BM17CS122'),
+('1BM18CS125'),
+('1BM19CS113'),
+('1BM19CS167');
 
 -- --------------------------------------------------------
 
@@ -335,6 +392,12 @@ ALTER TABLE `login_details`
   ADD KEY `Login_Details_fk0` (`USN`);
 
 --
+-- Indexes for table `otp_gen`
+--
+ALTER TABLE `otp_gen`
+  ADD PRIMARY KEY (`USN`);
+
+--
 -- Indexes for table `registered_students`
 --
 ALTER TABLE `registered_students`
@@ -383,12 +446,6 @@ ALTER TABLE `fastsem_registered`
 --
 ALTER TABLE `login_details`
   ADD CONSTRAINT `Login_Details_fk0` FOREIGN KEY (`USN`) REFERENCES `registered_students` (`USN`);
-
---
--- Constraints for table `registered_students`
---
-ALTER TABLE `registered_students`
-  ADD CONSTRAINT `Registered_Students_fk0` FOREIGN KEY (`Semester`) REFERENCES `sem_subjects` (`Sem`);
 
 --
 -- Constraints for table `sem_registered`
