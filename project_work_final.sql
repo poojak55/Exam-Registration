@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2021 at 09:34 AM
+-- Generation Time: Jun 24, 2021 at 09:56 AM
 -- Server version: 10.4.18-MariaDB
 -- PHP Version: 8.0.3
 
@@ -218,33 +218,6 @@ CREATE TABLE `sem_registered` (
   `USN` char(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `sem_registered`
---
-
-INSERT INTO `sem_registered` (`USN`) VALUES
-('1BM19CS001'),
-('1BM19CS101'),
-('1BM19CS113'),
-('1BM19CS114'),
-('1BM19CS118'),
-('1BM19CS126'),
-('1BM19CS134'),
-('1BM19CS156'),
-('1BM19CS167'),
-('1BM19CS177'),
-('1BM19CS178'),
-('1BM19CS189'),
-('1BM19CS221'),
-('1BM19CS222'),
-('1BM19CS335'),
-('1BM19CS456'),
-('1BM19CS564'),
-('1BM19CS654'),
-('1BM19CS667'),
-('1BM19CS789'),
-('1BM19CS899');
-
 -- --------------------------------------------------------
 
 --
@@ -368,6 +341,12 @@ ALTER TABLE `registered_students`
   ADD PRIMARY KEY (`USN`);
 
 --
+-- Indexes for table `sem_registered`
+--
+ALTER TABLE `sem_registered`
+  ADD KEY `usn_sem_fk` (`USN`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -410,6 +389,12 @@ ALTER TABLE `login_details`
 --
 ALTER TABLE `registered_students`
   ADD CONSTRAINT `Registered_Students_fk0` FOREIGN KEY (`Semester`) REFERENCES `sem_subjects` (`Sem`);
+
+--
+-- Constraints for table `sem_registered`
+--
+ALTER TABLE `sem_registered`
+  ADD CONSTRAINT `usn_sem_fk` FOREIGN KEY (`USN`) REFERENCES `registered_students` (`USN`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
