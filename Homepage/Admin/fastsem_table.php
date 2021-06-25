@@ -1,4 +1,11 @@
 <?php
+
+session_start();
+if (!isset($_SESSION["adm_id"])) {
+  header("Location:../home.php");
+}
+
+
 $con = new mysqli('localhost', 'root', '', 'project_work');
 // Check connection
 if (mysqli_connect_errno())
@@ -6,7 +13,7 @@ if (mysqli_connect_errno())
 echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 
-$result = mysqli_query($con,"SELECT r.USN,r.Name,r.Semester,r.Section from registered_students r inner join sem_registered s on r.USN=s.usn");
+$result = mysqli_query($con,"SELECT distinct r.USN,r.Name,r.Semester,r.Section from registered_students r inner join fastsem_registered f on r.USN=f.usn");
 ?>
 
 <!DOCTYPE html>
@@ -42,7 +49,7 @@ button{
   <body>
     <h3> Fast track examination</h3><br>
 <h4> Student details:</h4>
-<button type="button" class=" btn btn-outline-primary   "   onclick='window.location.href="admin_home.html";'>Back to Admin Home page.</button>
+<button type="button" class=" btn btn-outline-primary   "   onclick='window.location.href="admin_home.php";'>Back to Admin Home page.</button>
   
   <p>Search for a name in the input field.</p>
 
@@ -53,9 +60,9 @@ button{
 <tr>
 <th>USN</th>
 <th>Name</th>
-<th>Class</th>
+<th>Semester</th>
 <th>Section</th>
-<th>subjects_selected</th>
+
 </tr>";
 
 while($row = mysqli_fetch_array($result))
@@ -65,7 +72,6 @@ echo "<td>" . $row['USN'] . "</td>";
 echo "<td>" . $row['Name'] . "</td>";
 echo "<td>" . $row['Semester'] . "</td>";
 echo "<td>" . $row['Section'] . "</td>";
-echo "<td>" . $row['subjects_selected'] . "</td>";
 echo "</tr>";
 }
 echo "</table>";

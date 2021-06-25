@@ -1,4 +1,8 @@
 <?php
+session_start();
+if (!isset($_SESSION["adm_id"])) {
+  header("Location:../home.php");
+}
 $con = new mysqli('localhost', 'root', '', 'project_work');
 // Check connection
 if (mysqli_connect_errno())
@@ -45,7 +49,7 @@ button{
   <body>
     <h3> Semester end examination</h3><br>
 <h4> Student details:</h4>
-<button type="button" class=" btn btn-outline-primary   "   onclick='window.location.href="admin_home.html";'>Back to Admin Home page.</button>
+<button type="button" class=" btn btn-outline-primary   "   onclick='window.location.href="admin_home.php";'>Back to Admin Home page.</button>
   
   <p>Search for a name in the input field.</p>
   
@@ -55,7 +59,7 @@ button{
 <tr>
 <th>USN</th>
 <th>Name</th>
-<th>Class</th>
+<th>Semester</th>
 <th>Section</th>
 </tr>";
 
