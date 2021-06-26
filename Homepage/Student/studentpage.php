@@ -112,7 +112,6 @@ if(isset($_POST["change"])){
 
 
       <div class="col" id="navbar">
-
         <div class="d-flex mx-auto d-block">
           <ul class="nav   nav-tabs nav-justified" style="background-color:#ffd802;width:450px;">
             <li class="nav-item flex-fill">
@@ -144,16 +143,16 @@ if(isset($_POST["change"])){
 
 
       
-      <div class="tab-pane container fade  " id="menu1">
+       <div class="tab-pane container fade  " id="menu1">
 
-          <div class="card mx-auto d-block mt-3  profile" style="width:400px">
+<div class="card mx-auto d-block mt-3  profile" style="width:400px">
 
-           <div class="card-body details">
+  <div class="card-body details">
    
 
-             <table class="table table-borderless font-weight-bold  ">
-                <tbody>
-                  <?php
+    <table class="table table-borderless font-weight-bold  ">
+    <tbody>
+    <?php
 
           $conn = new mysqli('localhost', 'root', '', 'project_work');
 
@@ -191,9 +190,8 @@ if(isset($_POST["change"])){
 
 
                 <div class=" p-1 login">
-                <a href="#" style=" text-decoration:none;">
                   <button type="button" class="btn btn-block " href="#changepassword" data-toggle="modal" style="background-color: #0e918c;border-radius: 30px;color:white;">Change Password</button>
-                 
+                  <a href="#" style=" text-decoration:none;">
                     <button type="button" class="btn  btn-block mt-2" onclick="window.location.href='std_logout.php';" style="background-color: #0e918c;border-radius: 30px;color:white;">Log Out</button>
                   </a>
                 </div>
@@ -210,27 +208,65 @@ if(isset($_POST["change"])){
    <div class="tab-pane container fade" id="menu2">
 
 
-         <h1>CONTACT</h1>
-            <p>e-mail: examreg@gmail.com<br>
-               Phone no: 9741365928<br>
-               Phone no:9886492383<br>
-               Address:BMS College of Engneering<br> Bull Temple Rd, Basavanagudi, Karnataka, Bengaluru 560019</p>
+<h1>CONTACT</h1>
+<p>e-mail: examreg@gmail.com<br>
+  Phone no: 9741365928<br>
+  Phone no:9886492383<br>
+  Address:BMS College of Engneering<br> Bull Temple Rd, Basavanagudi, Karnataka, Bengaluru 560019</p>
 
 
 
-           <div class="mapouter">
+  <div class="mapouter">
             <div class="gmap_canvas">
-               <iframe width="450" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=BMSCE&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org"></a>
-               <br>
+<iframe width="450" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=BMSCE&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org"></a>
+<br>
 
 
 </div>
-
-   
+</div>
+   </div>
         
-     
+           <!--change password-->
 
+           <div id="changepassword" class="modal fade">
+
+<div class="modal-dialog modal-login">
+  <div class="modal-content">
+    <div class="modal-header">
+         
+      <h4 class="  modal-title">Change Password</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true"  >&times;</button>
+    </div>
+    <div class="modal-body">
+      <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" >
+        <div class="form-group">
+          <span id="oldp1" class="text-danger "></span >
+          <input type="password" class="form-control" name="old_password" id="oldp" placeholder="  Old Password" id="usn" >	
+            
+        </div>
+        <div class="form-group">
+          <span id="newp1" class="text-danger "></span >
+          <input type="password" class="form-control" name="new_password" id="newp" placeholder=" New password"  id="pass">
+         
           
+        </div>
+        <div class="form-group">
+          <span id="renewp1" class="text-danger "></span >
+          <input type="password" class="form-control" name="renew_password" id="renewp" placeholder="Retype New password"  id="pass">
+         
+          
+        </div>           
+        <div class="form-group">
+           
+          <button type="submit" class="btn btn-outline-dark btn-block" id ="change"  name="change">Change password</button>
+              
+        </div>
+      </form>
+    </div>
+   
+  </div>
+</div>
+</div> 
 
 
 
@@ -241,13 +277,8 @@ if(isset($_POST["change"])){
 
       </div>
 
-   
     </div>
-
-
-
-
-    
+    </div>
 </body>
 
 </html>
