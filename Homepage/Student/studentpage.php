@@ -14,9 +14,9 @@ if (!isset($_SESSION["usn"])) {
     $result = $conn->query($sql);
   }
 }
-if(isset($_POST["change"])){
+if (isset($_POST["change"])) {
   include("stu_change.php");
-  }
+}
 
 ?>
 <!DOCTYPE html>
@@ -64,27 +64,28 @@ if(isset($_POST["change"])){
     overflow-y: auto;
   }
 
-  .img-thumnail{
+  .img-thumnail {
     border-radius: 50%;
     position: relative;
     left: 90px;
   }
 
-  
-  .details{
-    position:relative;
-    left :10px;
+
+  .details {
+    position: relative;
+    left: 10px;
   }
 </style>
 
 
 <body>
   <div class="container">
+
     <div class="pt-3 mx-auto row">
       <h1 class="display-2 col " style="text-align: center;">Dept. Of Computer Science</h1>
     </div>
     <hr>
-  
+
     <div class="row">
       <div class="col " id="announcements">
 
@@ -106,7 +107,7 @@ if(isset($_POST["change"])){
           </div>
 
         </div>
-        
+
 
       </div>
 
@@ -125,12 +126,12 @@ if(isset($_POST["change"])){
             </li>
           </ul>
         </div>
-        </div>
+
 
         <!-- Tab panes -->
         <div class="tab-content ">
 
-          <div class="tab-pane container  active" id="home" >
+          <div class="tab-pane container  active" id="home">
             <p class="mt-5" style="font-size: 30px;font-weight:600;text-align:center;">Select the Exam to Register:</p>
             <div style="  top:50%;">
               <form method="POST" action='../../form/sem/sem_Validate.php'>
@@ -142,51 +143,49 @@ if(isset($_POST["change"])){
           </div>
 
 
-      
-       <div class="tab-pane container fade  " id="menu1">
 
-<div class="card mx-auto d-block mt-3  profile" style="width:400px">
+          <div class="tab-pane container fade  " id="menu1">
 
-  <div class="card-body details">
-   
+            <div class="card mx-auto d-block mt-3  profile" style="width:400px">
 
-    <table class="table table-borderless font-weight-bold  ">
-    <tbody>
-    <?php
+              <div class="card-body details">
 
-          $conn = new mysqli('localhost', 'root', '', 'project_work');
 
-           if ($conn->connect_error) {
-              die("Connection failed: " . $conn->connect_error);
-           }
-               
-         $usn=  $_SESSION["usn"];
+                <table class="table table-borderless font-weight-bold  ">
+                  <tbody>
+                    <?php
 
-             $sql= " SELECT  Name, USN, Semester, Email_ID, date_format(DOB, '%m/%d/%Y')as DOB ,Profile_pic from registered_students where USN = '$usn' ";
-           $result = $conn-> query($sql);
+                    $conn = new mysqli('localhost', 'root', '', 'project_work');
 
-            if($result-> num_rows > 0){
-              
-             while ($row = $result-> fetch_assoc()){
-              echo '<tr><img src="'.($row['Profile_pic'] ).'" height="150" width="150"  class="img-thumnail" /></tr>';
-               echo "<tr><td>Name :</td><td>".$row["Name"]."</td></tr>";
-               echo "<tr><td>USN :</td><td>".$row["USN"]."</td></tr>";
-               echo "<tr><td>semester :</td><td>".$row["Semester"]."</td></tr>";
-               echo "<tr><td>Email-ID :</td><td>".$row["Email_ID"]."</td></tr>";
-               echo "<tr><td>DOB :</td><td>".$row["DOB"]."</td></tr>";
-                 
-             }
-            }
-            else{
-              echo "0 result ";
-            }
-           
-          
-           $conn-> close();
-          
-           ?>
-        </tbody>
-          </table>
+                    if ($conn->connect_error) {
+                      die("Connection failed: " . $conn->connect_error);
+                    }
+
+                    $usn =  $_SESSION["usn"];
+
+                    $sql = " SELECT  Name, USN, Semester, Email_ID, date_format(DOB, '%m/%d/%Y')as DOB ,Profile_pic from registered_students where USN = '$usn' ";
+                    $result = $conn->query($sql);
+
+                    if ($result->num_rows > 0) {
+
+                      while ($row = $result->fetch_assoc()) {
+                        echo '<tr><img src="' . ($row['Profile_pic']) . '" height="150" width="150"  class="img-thumnail" /></tr>';
+                        echo "<tr><td>Name :</td><td>" . $row["Name"] . "</td></tr>";
+                        echo "<tr><td>USN :</td><td>" . $row["USN"] . "</td></tr>";
+                        echo "<tr><td>semester :</td><td>" . $row["Semester"] . "</td></tr>";
+                        echo "<tr><td>Email-ID :</td><td>" . $row["Email_ID"] . "</td></tr>";
+                        echo "<tr><td>DOB :</td><td>" . $row["DOB"] . "</td></tr>";
+                      }
+                    } else {
+                      echo "0 result ";
+                    }
+
+
+                    $conn->close();
+
+                    ?>
+                  </tbody>
+                </table>
 
 
                 <div class=" p-1 login">
@@ -202,83 +201,85 @@ if(isset($_POST["change"])){
               </div>
             </div>
           </div>
-          
-
-
-   <div class="tab-pane container fade" id="menu2">
-
-
-<h1>CONTACT</h1>
-<p>e-mail: examreg@gmail.com<br>
-  Phone no: 9741365928<br>
-  Phone no:9886492383<br>
-  Address:BMS College of Engneering<br> Bull Temple Rd, Basavanagudi, Karnataka, Bengaluru 560019</p>
 
 
 
-  <div class="mapouter">
-            <div class="gmap_canvas">
-<iframe width="450" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=BMSCE&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org"></a>
-<br>
+          <div class="tab-pane container fade" id="menu2">
 
 
-</div>
-</div>
-   </div>
-        
-           <!--change password-->
+            <h1>CONTACT</h1>
+            <p>e-mail: examreg@gmail.com<br>
+              Phone no: 9741365928<br>
+              Phone no:9886492383<br>
+              Address:BMS College of Engneering<br> Bull Temple Rd, Basavanagudi, Karnataka, Bengaluru 560019</p>
 
-           <div id="changepassword" class="modal fade">
 
-<div class="modal-dialog modal-login">
-  <div class="modal-content">
-    <div class="modal-header">
-         
-      <h4 class="  modal-title">Change Password</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true"  >&times;</button>
-    </div>
-    <div class="modal-body">
-      <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" >
-        <div class="form-group">
-          <span id="oldp1" class="text-danger "></span >
-          <input type="password" class="form-control" name="old_password" id="oldp" placeholder="  Old Password" id="usn" >	
-            
+
+            <div class="mapouter">
+              <div class="gmap_canvas">
+                <iframe width="450" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=BMSCE&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://123movies-to.org"></a>
+                <br>
+
+
+              </div>
+            </div>
+          </div>
+
         </div>
-        <div class="form-group">
-          <span id="newp1" class="text-danger "></span >
-          <input type="password" class="form-control" name="new_password" id="newp" placeholder=" New password"  id="pass">
-         
-          
-        </div>
-        <div class="form-group">
-          <span id="renewp1" class="text-danger "></span >
-          <input type="password" class="form-control" name="renew_password" id="renewp" placeholder="Retype New password"  id="pass">
-         
-          
-        </div>           
-        <div class="form-group">
-           
-          <button type="submit" class="btn btn-outline-dark btn-block" id ="change"  name="change">Change password</button>
-              
-        </div>
-      </form>
-    </div>
-   
-  </div>
-</div>
-</div> 
 
 
 
-
-
-      
 
 
       </div>
 
     </div>
+    <div id="changepassword" class="modal fade">
+
+      <div class="modal-dialog modal-login">
+        <div class="modal-content">
+          <div class="modal-header">
+
+            <h4 class="  modal-title">Change Password</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <div class="modal-body">
+            <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+              <div class="form-group">
+                <span id="oldp1" class="text-danger "></span>
+                <input type="password" class="form-control" name="old_password" id="oldp" placeholder="  Old Password" id="usn">
+
+              </div>
+              <div class="form-group">
+                <span id="newp1" class="text-danger "></span>
+                <input type="password" class="form-control" name="new_password" id="newp" placeholder=" New password" id="pass">
+
+
+              </div>
+              <div class="form-group">
+                <span id="renewp1" class="text-danger "></span>
+                <input type="password" class="form-control" name="renew_password" id="renewp" placeholder="Retype New password" id="pass">
+
+
+              </div>
+              <div class="form-group">
+
+                <button type="submit" class="btn btn-outline-dark btn-block" id="change" name="change">Change password</button>
+
+              </div>
+            </form>
+          </div>
+
+        </div>
+      </div>
     </div>
+
+  </div>
+
+
+
+
+
 </body>
 
 </html>
