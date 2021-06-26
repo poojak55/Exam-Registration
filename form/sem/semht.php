@@ -16,22 +16,22 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 } else {
   if ($sem == 3) {
-    $sql = "SELECT * FROM `third_sem_sub`";
+    $sql = "SELECT Name,Code,date_format(Date, '%m/%d/%Y')as Date FROM `third_sem_sub`";
   }
   if ($sem == 4) {
-    $sql = "SELECT * FROM `fourth_sem_sub`";
+    $sql = "SELECT Name,Code,date_format(Date, '%m/%d/%Y')as Date FROM `fourth_sem_sub`";
   }
   if ($sem == 5) {
-    $sql = "SELECT * FROM `fifth_sem_sub`";
+    $sql = "SELECT Name,Code,date_format(Date, '%m/%d/%Y')as Date FROM `fifth_sem_sub`";
   }
   if ($sem == 6) {
-    $sql = "SELECT * FROM `sixth_sem_sub`";
+    $sql = "SELECT Name,Code,date_format(Date, '%m/%d/%Y')as Date FROM `sixth_sem_sub`";
   }
   if ($sem == 7) {
-    $sql = "SELECT * FROM `seventh_sem_sub`";
+    $sql = "SELECT Name,Code,date_format(Date, '%m/%d/%Y')as Date FROM `seventh_sem_sub`";
   }
   if ($sem == 8) {
-    $sql = "SELECT * FROM `eighth_sem_sub`";
+    $sql = "SELECT Name,Code,date_format(Date, '%m/%d/%Y')as Date FROM `eighth_sem_sub`";
   }
   $result = $conn->query($sql);
 }
@@ -65,7 +65,7 @@ if ($conn->connect_error) {
   table,
   th,
   td {
-    text-align: center;
+    text-align: left;
     border: 2px solid black;
     border-collapse: collapse;
   }
@@ -97,6 +97,23 @@ if ($conn->connect_error) {
   .table {
     position: relative;
   }
+  .img-thumnail{
+    margin-right: 100px;
+    width:150px;
+    height:150px;
+  }
+  td.img-thumnail{
+    padding-top: 35px;
+  }
+  td.sign{
+    text-align: center;
+  }
+  td.info{
+    padding-left: 50px;
+    text-align: left;
+    width: 50%;
+  }
+ 
 </style>
 <!-- Bootstrap CSS -->
 
@@ -104,7 +121,7 @@ if ($conn->connect_error) {
 
 <body>
   <div class="card">
-    <img src="https://www.pngitem.com/pimgs/m/325-3253130_logo-bms-college-of-engineering-bangalore-hd-png.png" alt="logo">
+    <img src="https://img.collegepravesh.com/2017/02/BMSCE-Logo.png" alt="logo">
     <div class="card-body">
       <h2 style="text-align:center;background-color:#9fd1cd; font-weight: 800;color:black;">B.M.S.COLLEGE OF ENGINEERING, BENGALURU-560 019</h2>
       <h5 style="text-align:center; font-weight: 800;color:black;"> (Autonomous College under VTU)</h5>
@@ -113,6 +130,44 @@ if ($conn->connect_error) {
   <hr />
   <h2 style="text-align:center;background-color:#d19fa4; font-weight: 600;color:black;">HALL TICKET FOR SEMESTER EXAMINATIONS</h2>
   <hr />
+
+
+  <!--Student details-->
+<table class="table table-borderless font-weight-bold  " >
+                <tbody>
+                <?php
+
+                      $conn = new mysqli('localhost', 'root', '', 'project_work');
+
+                       if ($conn->connect_error) {
+                          die("Connection failed: " . $conn->connect_error);
+                       }
+                           
+                     $usn=  $_SESSION["usn"];
+
+                         $sql= " SELECT  Name, USN, Semester,  date_format(DOB, '%m/%d/%Y')as DOB ,Profile_pic from registered_students where USN = '$usn' ";
+                       $result1 = $conn-> query($sql);
+
+                        if($result1-> num_rows > 0){
+                          
+                         while ($row = $result1-> fetch_assoc()){
+                          
+                         
+                          echo "<tr><td class='info'><p>USN :" . $row["USN"] . "</p><p>Name :" . $row["Name"] . "</p><p>Semester :" . $row["Semester"] . "</p><p>DOB :" . $row["DOB"] . "<p>Branch : CSE</p></td>";
+                          echo '<td class= "img-thumnail"><img src="'.($row['Profile_pic'] ).'" height="100" width="100"   class="img-thumnail" /></td></tr>';
+                         
+                         }
+                        }
+                        else{
+                          echo "0 result ";
+                        }
+                       
+                      
+                       
+                      
+                       ?>
+                    </tbody>
+                      </table>
 
 
   <div class='tab'>
@@ -140,7 +195,15 @@ if ($conn->connect_error) {
           ?>
         </tbody>
       </table>
-
+      <table   class="table table-borderless font-weight-bold  ">
+      <tr >
+      <td>    </td><td>    </td></tr>
+      <td>    </td><td>    </td></tr>
+      <td>    </td><td>    </td></tr>
+        <td class="sign">Candidate Signature</td>
+        <td  class="sign">Controller of Examinations</td>
+      </tr>
+      </table>
 
 
 

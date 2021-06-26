@@ -1,6 +1,5 @@
 <?php
 
-
 $conn = new mysqli('localhost', 'root', '', 'project_work');
 // Check connection
 if ($conn->connect_error) {
@@ -35,7 +34,7 @@ if ($conn->connect_error) {
             $pass = $_POST["adm_pass"];
             if ($pass == $Password) {
 
-                header("Location:admin_home.php");
+                header("Location:Admin/admin_home.php");
                 $sql->close();
                 $sql2->close();
                 $conn->close();
