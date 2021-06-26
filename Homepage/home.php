@@ -37,7 +37,7 @@ if (isset($_POST["student"])) {
     }
 }
 if (isset($_POST["admin"])) {
-    $_SESSION["adm_id"] = $_POST['ID'];
+    $_SESSION["ID"] = $_POST['ID'];
 
     $IDErr;
     $adm_passErr;
@@ -68,7 +68,7 @@ if (isset($_POST["admin"])) {
 
 
     if (!isset($IDErr)) {
-        include("Admin/admlogin_validate.php");
+        include("./Admin/admlogin_validate.php");
     }
 }
 function test_input($data)

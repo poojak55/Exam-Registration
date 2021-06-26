@@ -1,5 +1,5 @@
 <?php
 session_start();
-unset($_SESSION["adm_id"]);
+unset($_SESSION["ID"]);
 
 header("Location:../home.php");

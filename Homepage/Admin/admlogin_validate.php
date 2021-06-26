@@ -1,6 +1,5 @@
 <?php
 
-
 $conn = new mysqli('localhost', 'root', '', 'project_work');
 // Check connection
 if ($conn->connect_error) {
