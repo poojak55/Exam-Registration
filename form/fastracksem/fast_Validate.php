@@ -1,8 +1,10 @@
+
 <?php
-session_start();
+
 
 $_SESSION["amount"] = $_POST["examfee"];
-
+$radioErr;
+$credErr;
 
 
 
@@ -94,5 +96,3 @@ function test_input($data)
     $data = htmlspecialchars($data);
     return $data;
 }
-
-include('fastsem.php');

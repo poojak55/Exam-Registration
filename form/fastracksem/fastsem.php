@@ -1,5 +1,7 @@
 <?php session_start();
-
+if (isset($_POST["fastsem_submit"])) {
+    include("fast_Validate.php");
+}
 
 ?>
 <!DOCTYPE html>
@@ -318,7 +320,7 @@
 
             });
         </script>
-        <form id="registration" method="POST" action="fast_Validate.php">
+        <form id="registration" method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
             <div class="row mx-3">
                 <div class="col">
 
@@ -416,7 +418,7 @@
 
                 </div>
             </div>
-            <button type="submit" class=" btn  btn-block  shadow-sm mx-auto" id="submitsem"> SUBMIT </button>
+            <button type="submit" name="fastsem_submit" class=" btn  btn-block  shadow-sm mx-auto" id="submitsem"> SUBMIT </button>
         </form>
 
     </div>
