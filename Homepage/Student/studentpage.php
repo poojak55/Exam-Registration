@@ -234,7 +234,10 @@ if (isset($_POST["change"])) {
       </div>
 
     </div>
-    <div id="changepassword" class="modal fade">
+    
+
+  </div>
+  <div id="changepassword" class="modal fade">
 
       <div class="modal-dialog modal-login">
         <div class="modal-content">
@@ -273,9 +276,7 @@ if (isset($_POST["change"])) {
         </div>
       </div>
     </div>
-
   </div>
-
 
 
 

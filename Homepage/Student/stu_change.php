@@ -8,17 +8,17 @@ if ($conn->connect_error) {
 {
     $usn=$_SESSION["usn"];
     $old_pass=$_POST["old_password"];
-    $sql = "SELECT Password FROM login_details WHERE USN='$usn'";
-    $result = $conn-> query($sql);
+    $sql_std = "SELECT Password FROM login_details WHERE USN='$usn'";
+    $result_std = $conn-> query($sql_std);
 
-         if($result-> num_rows > 0){
-                           while ($row = $result-> fetch_assoc()){
+         if($result_std-> num_rows > 0){
+                           while ($row = $result_std-> fetch_assoc()){
                                if($old_pass==$row["Password"]){
                                     $new_pass=$_POST["new_password"];
                                     $renew_pass=$_POST["renew_password"];
                                    if($new_pass==$renew_pass){
-                                       $sql2="UPDATE `login_details` SET `Password`='$new_pass' WHERE `USN`='$usn'";
-                                      if( $result2 = $conn-> query($sql2)){
+                                       $sql2_std="UPDATE `login_details` SET `Password`='$new_pass' WHERE `USN`='$usn'";
+                                      if( $result2_std = $conn-> query($sql2_std)){
                                         echo "<script type='text/javascript'> 
                                         alert('Password changed Sucessfully!!!!');
                                         
@@ -29,6 +29,7 @@ if ($conn->connect_error) {
                                         alert('Something is wrong in server side!!!!');
                                         
                                         </script>";
+
                                       }
                                    }
                                    else{
@@ -47,4 +48,5 @@ if ($conn->connect_error) {
                                }
                             }
                         }
+                        $conn->close();
 }
