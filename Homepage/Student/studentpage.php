@@ -234,49 +234,49 @@ if (isset($_POST["change"])) {
       </div>
 
     </div>
-    
+
 
   </div>
   <div id="changepassword" class="modal fade">
 
-      <div class="modal-dialog modal-login">
-        <div class="modal-content">
-          <div class="modal-header">
+    <div class="modal-dialog modal-login">
+      <div class="modal-content">
+        <div class="modal-header">
 
-            <h4 class="  modal-title">Change Password</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-          </div>
-          <div class="modal-body">
-            <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-              <div class="form-group">
-                <span id="oldp1" class="text-danger "></span>
-                <input type="password" class="form-control" name="old_password" id="oldp" placeholder="  Old Password" id="usn">
-
-              </div>
-              <div class="form-group">
-                <span id="newp1" class="text-danger "></span>
-                <input type="password" class="form-control" name="new_password" id="newp" placeholder=" New password" id="pass">
-
-
-              </div>
-              <div class="form-group">
-                <span id="renewp1" class="text-danger "></span>
-                <input type="password" class="form-control" name="renew_password" id="renewp" placeholder="Retype New password" id="pass">
-
-
-              </div>
-              <div class="form-group">
-
-                <button type="submit" class="btn btn-outline-dark btn-block" id="change" name="change">Change password</button>
-
-              </div>
-            </form>
-          </div>
-
+          <h4 class="  modal-title">Change Password</h4>
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         </div>
+        <div class="modal-body">
+          <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+            <div class="form-group">
+              <span id="oldp1" class="text-danger "></span>
+              <input type="password" class="form-control" name="old_password" id="oldp" placeholder="  Old Password" id="usn">
+
+            </div>
+            <div class="form-group">
+              <span id="newp1" class="text-danger "></span>
+              <input type="password" class="form-control" name="new_password" id="newp" placeholder=" New password" id="pass">
+
+
+            </div>
+            <div class="form-group">
+              <span id="renewp1" class="text-danger "></span>
+              <input type="password" class="form-control" name="renew_password" id="renewp" placeholder="Retype New password" id="pass">
+
+
+            </div>
+            <div class="form-group">
+
+              <button type="submit" class="btn btn-outline-dark btn-block" id="change" name="change">Change password</button>
+
+            </div>
+          </form>
+        </div>
+
       </div>
     </div>
   </div>
+
 
 
 
